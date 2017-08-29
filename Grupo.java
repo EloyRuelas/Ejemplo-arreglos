@@ -13,12 +13,21 @@ public class Grupo
     {
         for(int i=0;i<estudiantes.length;i++)
         {
-            estudiantes[0]= e;
+            if(estudiantes[i]==null)
+            {
+                estudiantes[i]= e;
+            }
         }
     }
     
     public void darBaja(int claveEstudiante)
     {
-        
+        for(int i=0;i<estudiantes.length;i++)
+        {
+            if(claveEstudiante==estudiantes[i].dimeClave())
+            {
+                estudiantes[i]=null;
+            }
+        }
     }
 }

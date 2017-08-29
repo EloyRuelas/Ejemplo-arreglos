@@ -14,4 +14,8 @@ public class Estudiante
         return "clave:" + clave + ", Nombre: " + nombre;
     }
     
+    public int dimeClave()
+    {
+        return clave;
+    }
 }

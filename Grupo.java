@@ -50,16 +50,29 @@ public class Grupo
         return true;        //el estudiante fue inscrito
     }
     
-    public void darBaja(int claveEstudiante)
+    /**
+     * Da de baja a un alumno del grupo.
+     * @param es el objeto estudiante a dar de baja.
+     * @return regresa verdadero si se logro dar de baja, y false si no se encuentra el estudiante en el grupo.
+     */
+    public boolean darBaja(Estudiante e)
     {
-        for(int i=0;i<estudiantes.length;i++)
+        int existe=this.buscarEstudiante(e.dimeClave());
+        if(existe!=1)
         {
-            if(claveEstudiante==estudiantes[i].dimeClave())
+            estudiantes[existe]=null;
+            if(estudiantes[existe]==null)
             {
-                estudiantes[i]=null;
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
+        return true;
     }
+        
     
     /**
      * Busca un estudiante por medio de su clave.
@@ -70,9 +83,12 @@ public class Grupo
     {
         for(int i=0; i< estudiantes.length; i++)
         {
-            if(estudiantes[i].dimeClave()==claveEstudiante)
+            if(estudiantes[i]!=null)
             {
-                return i;
+                if(estudiantes[i].dimeClave()==claveEstudiante)
+                {
+                    return i;
+                }
             }
         }
         return -1;
